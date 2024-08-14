@@ -1,0 +1,20 @@
+/* Make tables responsive */
+.table-responsive {
+    overflow-x: auto;
+  }
+  
+  /* Adjust padding for smaller screens */
+  @media (max-width: 767px) {
+    .form-control {
+      padding: 0.5rem; /* Adjust padding */
+    }
+  
+    .btn {
+      font-size: 0.875rem; /* Adjust button font size */
+    }
+  
+    .table {
+      font-size: 0.875rem; /* Adjust table font size */
+    }
+  }
+  

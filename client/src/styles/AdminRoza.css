@@ -1,0 +1,32 @@
+/* AdminRoza.css */
+
+/* Container styles */
+.container {
+    max-width: 600px;
+    margin: auto;
+  }
+  
+  /* Status label styles */
+  .status-label {
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
+  
+  /* Button styles */
+  .btn {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+  }
+  
+  /* Media Queries for responsiveness */
+  @media (max-width: 576px) {
+    .status-label {
+      font-size: 1rem;
+    }
+  
+    .btn {
+      font-size: 0.875rem;
+      padding: 0.375rem 0.75rem;
+    }
+  }
+  

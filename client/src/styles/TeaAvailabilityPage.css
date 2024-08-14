@@ -1,0 +1,42 @@
+.tea-availability-page {
+    min-height: 100vh;
+    text-align: center;
+    background-color: #282c34; /* Dark background */
+    color: white; /* White text */
+    padding: 20px;
+  }
+  
+  .welcome-text {
+    font-weight: bold;
+    font-size: 3rem;
+    text-shadow: 3px 3px 5px rgba(255, 255, 255, 0.5);
+  }
+  
+  .status-text {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+  }
+  
+  .button-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  @media (max-width: 576px) {
+    .welcome-text {
+      font-size: 2rem;
+    }
+  
+    .status-text {
+      font-size: 1.4rem;
+    }
+  
+    .btn-lg {
+      width: 100%;
+      font-size: 1.2rem;
+    }
+  }
+  

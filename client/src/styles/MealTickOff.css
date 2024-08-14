@@ -1,0 +1,22 @@
+/* General container styling */
+.container {
+    margin-top: 2rem;
+  }
+  
+  /* Modal content styling */
+  @media (max-width: 767px) {
+    .text-center h2 {
+      font-size: 2rem; /* Adjust font size for smaller screens */
+    }
+    .text-center p {
+      font-size: 0.9rem; /* Adjust font size for smaller screens */
+    }
+  }
+  
+  /* Responsive text alignment */
+  @media (max-width: 767px) {
+    .text-center {
+      text-align: left;
+    }
+  }
+  

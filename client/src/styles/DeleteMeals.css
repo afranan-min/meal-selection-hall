@@ -1,0 +1,30 @@
+/* DeleteMeals.css */
+
+.delete-meals-page {
+    height: 100vh;
+  }
+  
+  /* Card styles */
+  .card {
+    max-width: 600px;
+    margin: auto;
+  }
+  
+  /* Button styles */
+  .btn-lg {
+    font-size: 1rem;
+    padding: 0.75rem 1.5rem;
+  }
+  
+  /* Media Queries for responsiveness */
+  @media (max-width: 576px) {
+    .card {
+      padding: 1rem;
+    }
+  
+    .btn-lg {
+      font-size: 0.875rem;
+      padding: 0.5rem 1rem;
+    }
+  }
+  

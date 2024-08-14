@@ -1,0 +1,36 @@
+/* AdminComplaints.css */
+
+/* Container padding */
+.container {
+    padding: 20px;
+  }
+  
+  /* Table responsiveness */
+  .table-responsive {
+    margin-top: 20px;
+  }
+  
+  /* Button styles */
+  .btn-danger {
+    margin-left: auto;
+  }
+  
+  /* Media Queries for responsiveness */
+  @media (max-width: 768px) {
+    .table-responsive {
+      margin-top: 10px;
+    }
+  
+    .btn-danger {
+      width: 100%;
+    }
+  
+    .thead-dark th {
+      font-size: 14px;
+    }
+  
+    tbody td {
+      font-size: 14px;
+    }
+  }
+  

@@ -1,0 +1,26 @@
+/* General container styling */
+.container {
+    margin-top: 2rem;
+  }
+  
+  /* Table styling */
+  .table {
+    background-color: #fff;
+  }
+  
+  .thead-dark {
+    background-color: #343a40;
+    color: #fff;
+  }
+  
+  .table-hover tbody tr:hover {
+    background-color: rgba(0, 0, 0, 0.075);
+  }
+  
+  /* Responsive text alignment */
+  @media (max-width: 767px) {
+    .text-center {
+      text-align: left;
+    }
+  }
+  

@@ -1,0 +1,41 @@
+/* AdminNotification.css */
+
+/* Container styles */
+.container {
+    max-width: 600px;
+    margin: auto;
+  }
+  
+  /* Form group styles */
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Input styles */
+  .form-control {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+  }
+  
+  /* Button styles */
+  .btn {
+    padding: 0.5rem 1.5rem;
+    font-size: 1.25rem;
+  }
+  
+  /* Media Queries for responsiveness */
+  @media (max-width: 576px) {
+    .form-group label {
+      font-size: 16px;
+    }
+  
+    .form-control {
+      font-size: 14px;
+    }
+  
+    .btn-lg {
+      font-size: 16px;
+      padding: 10px 20px;
+    }
+  }
+  

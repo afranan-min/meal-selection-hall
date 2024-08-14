@@ -1,0 +1,20 @@
+/* Make tables responsive */
+.table-responsive {
+    overflow-x: auto;
+  }
+  
+  /* Adjust padding for smaller screens */
+  @media (max-width: 767px) {
+    .container {
+      padding: 1rem; /* Adjust padding for smaller screens */
+    }
+  
+    .table th, .table td {
+      font-size: 0.875rem; /* Adjust font size for smaller screens */
+    }
+  
+    .table {
+      font-size: 0.875rem; /* Adjust table font size */
+    }
+  }
+  
