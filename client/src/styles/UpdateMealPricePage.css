@@ -1,0 +1,82 @@
+.container.update-meal-price-page {
+    padding: 20px;
+    max-width: 800px;
+    margin: auto;
+  }
+  
+  .day-section {
+    margin-bottom: 20px;
+  }
+  
+  .day-section h3 {
+    margin-bottom: 10px;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+  }
+  
+  label {
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  input {
+    padding: 8px;
+    font-size: 16px;
+  }
+  
+  button {
+    width: 100%;
+    padding: 10px;
+    font-size: 18px;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .form-group {
+      flex-direction: column;
+    }
+  
+    .day-section {
+      padding: 10px;
+      border-bottom: 1px solid #ccc;
+    }
+  
+    h2 {
+      font-size: 24px;
+      text-align: center;
+    }
+  
+    .day-section h3 {
+      font-size: 20px;
+    }
+  
+    button {
+      width: 100%;
+      font-size: 16px;
+      padding: 12px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    h2 {
+      font-size: 20px;
+    }
+  
+    .day-section h3 {
+      font-size: 18px;
+    }
+  
+    button {
+      font-size: 14px;
+    }
+  
+    input {
+      font-size: 14px;
+      padding: 6px;
+    }
+  }
+  

@@ -1,0 +1,40 @@
+.container {
+    padding: 15px;
+  }
+  
+  .table-responsive {
+    margin-top: 20px;
+  }
+  
+  h2 {
+    font-size: 1.8rem;
+  }
+  
+  @media (max-width: 768px) {
+    h2 {
+      font-size: 1.5rem;
+    }
+  
+    .table thead th {
+      font-size: 0.9rem;
+    }
+  
+    .table tbody td {
+      font-size: 0.8rem;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .table thead th, .table tbody td {
+      padding: 8px;
+    }
+  
+    .table thead th {
+      font-size: 0.8rem;
+    }
+  
+    .table tbody td {
+      font-size: 0.7rem;
+    }
+  }
+  

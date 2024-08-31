@@ -40,6 +40,9 @@ const AdminDashboard = () => {
         <Link to="/admin-dashboard/delete-meal" className="btn btn-light btn-lg">Delete Meal</Link>
         <Link to="/admin-dashboard/show-student-info" className="btn btn-light btn-lg">Show Student Info</Link>
         <Link to="/admin-dashboard/change-room" className="btn btn-light btn-lg">Change Room</Link>
+        <Link to="/admin-dashboard/get-prices-meal" className="btn btn-light btn-lg">Price Meal</Link>
+        <Link to="/admin-dashboard/update-prices-meal" className="btn btn-light btn-lg">Update Price Meal</Link>
+        <Link to="/admin-dashboard/show-students-bill" className="btn btn-light btn-lg">Show Bill</Link>
       </div>
 
       {/* Placeholder content */}
