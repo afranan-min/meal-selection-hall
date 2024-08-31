@@ -29,6 +29,7 @@ import RozaMealRoutinePage from './pages/RozaMealRoutinePage';
 import PriceRoutinePage from './pages/PriceRoutinePage';
 import UpdateMealPricePage from './pages/UpdateMealPricePage';
 import BillingPage from './pages/BillingPage';
+import StudentBillPage from './pages/StudentBillPage';
 const App = () => {
   return (
     <Router>
@@ -61,6 +62,7 @@ const App = () => {
         <Route path="/admin-dashboard/get-prices-meal" element={<ProtectedRoute requiredRole="admin"><PriceRoutinePage /></ProtectedRoute>} />
         <Route path="/admin-dashboard/update-prices-meal" element={<ProtectedRoute requiredRole="admin"><UpdateMealPricePage /></ProtectedRoute>} />
         <Route path="/admin-dashboard/show-students-bill" element={<ProtectedRoute requiredRole="admin"><BillingPage /></ProtectedRoute>} />
+        <Route path="/admin-dashboard/show-specific-student-bill" element={<ProtectedRoute requiredRole="admin"><StudentBillPage /></ProtectedRoute>} />
       </Routes>
     </Router>
   );

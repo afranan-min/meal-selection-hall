@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { saveMealSelection, saveRozaMealSelection,deleteStudent,getMonthlyBills } = require('../controllers/mealController');
+const { saveMealSelection, saveRozaMealSelection,deleteStudent,getMonthlyBills ,getStudentMonthlyBills} = require('../controllers/mealController');
 const { getMealsByDate, getAllMeals,getRozaAllMeals,getRozaMealsByDate } = require('../controllers/getMealController');
 
 // POST route to save meal selections
@@ -16,5 +16,5 @@ router.get('/roza-meals/:date', getRozaMealsByDate);
 router.get('/meals-all', getAllMeals);
 router.get('/roza-meals-all', getRozaAllMeals);
 router.get('/get-student-bills/:year/:month', getMonthlyBills);
-
+router.get('/get-specipic-student-bill/:year/:month/:studentId', getStudentMonthlyBills);
 module.exports = router;

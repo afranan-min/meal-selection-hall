@@ -154,7 +154,7 @@ const getMonthlyBills = async (req, res) => {
         //console.log(`  Dinner: ${meal.dinner ? `Included at ${meal.dinnerPrice}` : 'Not included'}`);
         
         // Calculate total for the student
-        total += (meal.breakfast ? meal.breakfastPrice : 0) + (meal.lunch ? meal.lunchPrice : 0) + (meal.dinner ? meal.dinnerPrice : 0);
+        total += (meal.breakfast =="yes"? meal.breakfastPrice : 0) + (meal.lunch=="yes" ? meal.lunchPrice : 0) + (meal.dinner=="yes" ? meal.dinnerPrice : 0);
       }
       
       // Store the bill for the student
@@ -170,5 +170,80 @@ const getMonthlyBills = async (req, res) => {
     res.status(500).json({ message: 'Failed to fetch monthly bills' });
   }
 };
+const getStudentMonthlyBills = async (req, res) => {
+  const { year, month, studentId } = req.params; // Now expecting studentId as a parameter
 
-module.exports = { saveMealSelection ,saveRozaMealSelection,deleteStudent,getMonthlyBills};
+  try {
+    // Define start and end dates for the month
+    const startDate = new Date(`${year}-${month}-01T00:00:00Z`);
+    const endDate = new Date(startDate);
+    endDate.setMonth(startDate.getMonth() + 1); // Set to the first day of the next month
+
+    // Aggregate meals to get the latest entry for each day in the specified month for the given studentId
+    const meals = await Meal.aggregate([
+      {
+        $match: {
+          sid: studentId,
+          date: {
+            $gte: startDate,
+            $lt: endDate
+          }
+        }
+      },
+      {
+        $sort: { date: -1 } // Sort by date in descending order
+      },
+      {
+        $group: {
+          _id: {
+            day: { $dateToString: { format: "%Y-%m-%d", date: "$date" } }
+          },
+          latestMeal: { $first: "$$ROOT" }
+        }
+      },
+      {
+        $replaceRoot: { newRoot: "$latestMeal" }
+      },
+      {
+        $sort: { date: 1 } // Optional: Sort by date in ascending order if needed
+      }
+    ]);
+
+    // Calculate the total bill and meal counts for the month
+    let totalBill = 0;
+    const mealDetails = meals.map((meal) => {
+      const { breakfast, lunch, dinner, breakfastPrice, lunchPrice, dinnerPrice, date, day } = meal;
+
+      // Calculate the daily cost
+      const dailyTotal = (breakfast === 'yes' ? breakfastPrice : 0) +
+        (lunch === 'yes' ? lunchPrice : 0) +
+        (dinner === 'yes' ? dinnerPrice : 0);
+        
+      totalBill += dailyTotal;
+
+      return {
+        date,
+        day,
+        breakfast,
+        lunch,
+        dinner,
+        breakfastPrice,
+        lunchPrice,
+        dinnerPrice,
+        dailyTotal,
+      };
+    });
+
+    // Return the calculated bill and details
+    res.status(200).json({
+      studentId,
+      totalBill,
+      meals: mealDetails
+    });
+  } catch (error) {
+    console.error('Error fetching monthly bill:', error.message);
+    res.status(500).json({ message: 'Failed to fetch monthly bill' });
+  }
+};
+
+module.exports = { saveMealSelection ,saveRozaMealSelection,deleteStudent,getMonthlyBills,getStudentMonthlyBills};
