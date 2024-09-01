@@ -8,6 +8,7 @@ const StudentBillPage = () => {
   const [month, setMonth] = useState('');
   const [studentId, setStudentId] = useState('');
   const [bill, setBill] = useState(null);
+  const [billr, setBillr] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const componentRef = useRef();
@@ -15,6 +16,7 @@ const StudentBillPage = () => {
   useEffect(() => {
     if (year && month && studentId) {
       fetchBill(year, month, studentId);
+      fetchBillr(year, month, studentId);
     }
   }, [year, month, studentId]);
 
@@ -27,7 +29,22 @@ const StudentBillPage = () => {
       );
       setBill(response.data);
     } catch (err) {
-      setError('Failed to fetch bill');
+      setError('Failed to fetch regular meal bill');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const fetchBillr = async (selectedYear, selectedMonth, selectedStudentId) => {
+    setLoading(true);
+    setError(null);
+    try {
+      const response = await axios.get(
+        `http://localhost:5000/api/meals/get-specipic-student-roza-bill/${selectedYear}/${selectedMonth}/${selectedStudentId}`
+      );
+      setBillr(response.data);
+    } catch (err) {
+      setError('Failed to fetch Roza meal bill');
     } finally {
       setLoading(false);
     }
@@ -83,33 +100,69 @@ const StudentBillPage = () => {
       </Row>
       {loading && <Spinner animation="border" />}
       {error && <Alert variant="danger">{error}</Alert>}
-      {bill && (
+      {(bill || billr) && (
         <>
           <div ref={componentRef}>
-            <h5>Monthly Bill for Student ID: {bill.studentId}</h5>
-            <p>Total Bill: Taka {bill.totalBill.toFixed(2)}</p>
-            <Table striped bordered hover responsive>
-              <thead>
-                <tr>
-                  <th>Date</th>
-                  <th>Breakfast</th>
-                  <th>Lunch</th>
-                  <th>Dinner</th>
-                  <th>Day Total</th>
-                </tr>
-              </thead>
-              <tbody>
-                {bill.meals.map((meal, index) => (
-                  <tr key={index}>
-                    <td>{new Date(meal.date).toLocaleDateString()}</td>
-                    <td>{meal.breakfast === 'yes' ? `Included (${meal.breakfastPrice})` : 'Not included'}</td>
-                    <td>{meal.lunch === 'yes' ? `Included (${meal.lunchPrice})` : 'Not included'}</td>
-                    <td>{meal.dinner === 'yes' ? `Included (${meal.dinnerPrice})` : 'Not included'}</td>
-                    <td>Taka {meal.dailyTotal.toFixed(2)}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </Table>
+            {bill && (
+              <>
+                <h5>Monthly Bill for Regular Meals</h5>
+                <p>Total Bill: Taka {bill.totalBill.toFixed(2)}</p>
+                <Table striped bordered hover responsive>
+                  <thead>
+                    <tr>
+                      <th>Day</th>
+                      <th>Breakfast</th>
+                      <th>Lunch</th>
+                      <th>Dinner</th>
+                      <th>Day Total</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {bill.meals.map((meal, index) => (
+                      <tr key={index}>
+                        <td>{new Date(meal.date).toLocaleDateString()}</td>
+                        <td>{meal.breakfast === 'yes' ? `Included (${meal.breakfastPrice})` : 'Not included'}</td>
+                        <td>{meal.lunch === 'yes' ? `Included (${meal.lunchPrice})` : 'Not included'}</td>
+                        <td>{meal.dinner === 'yes' ? `Included (${meal.dinnerPrice})` : 'Not included'}</td>
+                        <td>Taka {meal.dailyTotal.toFixed(2)}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </Table>
+              </>
+            )}
+            {billr && (
+              <>
+                <h5>Monthly Bill for Roza Meals</h5>
+                <p>Total Bill: Taka {billr.totalBill.toFixed(2)}</p>
+                <Table striped bordered hover responsive>
+                  <thead>
+                    <tr>
+                      <th>Date</th>
+                      <th>Breakfast</th>
+                      <th>Lunch</th>
+                      <th>Dinner</th>
+                      <th>Sehri</th>
+                      <th>Iftar</th>
+                      <th>Day Total</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {billr.meals.map((meal, index) => (
+                      <tr key={index}>
+                        <td>{new Date(meal.date).toLocaleDateString()}</td>
+                        <td>{meal.breakfast === 'yes' ? `Included (${meal.breakfastPrice})` : 'Not included'}</td>
+                        <td>{meal.lunch === 'yes' ? `Included (${meal.lunchPrice})` : 'Not included'}</td>
+                        <td>{meal.dinner === 'yes' ? `Included (${meal.dinnerPrice})` : 'Not included'}</td>
+                        <td>{meal.sehri === 'yes' ? `Included (${meal.sehriPrice})` : 'Not included'}</td>
+                        <td>{meal.iftar === 'yes' ? `Included (${meal.iftarPrice})` : 'Not included'}</td>
+                        <td>Taka {meal.dailyTotal.toFixed(2)}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </Table>
+              </>
+            )}
           </div>
           <Button variant="primary" onClick={handlePrint} className="mt-3">
             Print Bill
