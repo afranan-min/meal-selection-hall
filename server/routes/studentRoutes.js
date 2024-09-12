@@ -1,5 +1,5 @@
 const express = require('express');
-const { addStudent,deleteStudentById,changeStudentPassword,getRoutine,updateRoutine ,getTeaAvailability,updateTeaAvailability,addNotification,getNotification,deleteNotification,addComplaint,getComplaint,deleteAllComplaint,deleteOneComplaint,getRozastatus,postRozastatus,getStudentinfo,changeStudentRoom,getrozaRoutine,updaterozaRoutine,getPriceroutine,updateMealPrices} = require('../controllers/studentController');
+const { addStudent,deleteStudentById,changeStudentPassword,getRoutine,updateRoutine ,getTeaAvailability,updateTeaAvailability,addNotification,getNotification,deleteNotification,addComplaint,getComplaint,deleteAllComplaint,deleteOneComplaint,getRozastatus,postRozastatus,getStudentinfo,changeStudentRoom,getrozaRoutine,updaterozaRoutine,getPriceroutine,updateMealPrices,getrozaPriceroutine,updaterozaMealPrices} = require('../controllers/studentController');
 const { loginStudent ,loginAdmin} = require('../controllers/studentLoginController');
 const { deleteAllMeals,deleteAllMealsRoza } = require('../controllers/getMealController');
 const router = express.Router();
@@ -27,6 +27,8 @@ router.delete('/delete-all-meals', deleteAllMeals);
 router.delete('/delete-all-meals-roza', deleteAllMealsRoza );
 router.get('/student-info',getStudentinfo);
 router.put('/change-student-room', changeStudentRoom);
-router.get('/get-prices',getPriceroutine);updateMealPrices
+router.get('/get-prices',getPriceroutine);
 router.put('/update-prices', updateMealPrices);
+router.get('/get-roza-prices',getrozaPriceroutine);
+router.put('/update-roza-prices', updaterozaMealPrices);
 module.exports = router;

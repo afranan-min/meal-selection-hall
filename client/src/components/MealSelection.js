@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import MealRoutinePage from '../pages/MealRoutinePage';
 import '../styles/MealSelection.css'; // Import the CSS file for custom styles
-
+import PriceRoutinePage from '../pages/PriceRoutinePage';
 const MealSelection = () => {
   const [mealSelection, setMealSelection] = useState({
     sid: localStorage.getItem('studentId') || '',
@@ -19,6 +19,7 @@ const MealSelection = () => {
   const [notifications, setNotifications] = useState([]);
   const [showNotifications, setShowNotifications] = useState(false);
   const [menuOpen, setMenuOpen] = useState(true);
+  const [showPricePopup, setShowPricePopup] = useState(false);
 
   const navigate = useNavigate();
 
@@ -66,7 +67,7 @@ const MealSelection = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { breakfast, lunch, dinner} = mealSelection;
+    const { breakfast, lunch, dinner } = mealSelection;
     if (!breakfast || !lunch || !dinner) {
       alert('Please select yes or no for all these three (breakfast,lunch,dinner).');
       return;
@@ -93,6 +94,9 @@ const MealSelection = () => {
   const toggleNotifications = () => {
     setShowNotifications(!showNotifications);
   };
+  const togglePricePopup = () => {
+    setShowPricePopup(!showPricePopup);
+  };
 
   const toggle = () => {
     navigate('/student-login/add-complaint');
@@ -107,6 +111,9 @@ const MealSelection = () => {
           </button>
           <button onClick={toggleRoutinePopup} className="btn btn-secondary">
             View Meal Routine
+          </button>
+          <button onClick={togglePricePopup} className="btn btn-secondary">
+            View Meal Prices
           </button>
           <button onClick={toggleNotifications} className="btn btn-secondary">
             View Notifications
@@ -125,7 +132,7 @@ const MealSelection = () => {
       </div>
 
       {!showRoutinePopup && !showNotifications && (
-        <div className="card p-4 shadow-lg" style={{ width: '100%', maxWidth: '500px', marginTop:'240px'}}>
+        <div className="card p-4 shadow-lg" style={{ width: '100%', maxWidth: '500px', marginTop: '300px' }}>
           <h2 className="text-center mb-4">Select Your Meals for Tomorrow</h2>
           <form onSubmit={handleSubmit}>
             <div className="form-group mb-3">
@@ -218,6 +225,17 @@ const MealSelection = () => {
           </div>
         </div>
       )}
+      {showPricePopup && (
+        <div className="popup">
+          <div className="popup-content">
+            <button className="close-btn" onClick={togglePricePopup}>
+              Close
+            </button>
+            <PriceRoutinePage />
+          </div>
+        </div>
+      )}
+
       {showNotifications && (
         <div className="notifications">
           <div className="notifications-content">

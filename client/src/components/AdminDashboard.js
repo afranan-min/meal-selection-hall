@@ -42,8 +42,10 @@ const AdminDashboard = () => {
         <Link to="/admin-dashboard/change-room" className="btn btn-light btn-lg">Change Room</Link>
         <Link to="/admin-dashboard/get-prices-meal" className="btn btn-light btn-lg">Price Meal</Link>
         <Link to="/admin-dashboard/update-prices-meal" className="btn btn-light btn-lg">Update Price Meal</Link>
+        <Link to="/admin-dashboard/update-roza-prices-meal" className="btn btn-light btn-lg">Update Roza Price Meal</Link>
         <Link to="/admin-dashboard/show-students-bill" className="btn btn-light btn-lg">Show Bill</Link>
         <Link to="/admin-dashboard/show-specific-student-bill" className="btn btn-light btn-lg">Show Specific Student Bill</Link>
+        <Link to="/admin-dashboard/get-roza-prices-meal" className="btn btn-light btn-lg">Roza Price Meal</Link>
       </div>
 
       {/* Placeholder content */}

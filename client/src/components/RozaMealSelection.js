@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import RozaMealRoutinePage from '../pages/RozaMealRoutinePage';
+import PriceRoutinePageRoza from '../pages/PriceRoutinePageRoza';
 import '../styles/RozaMealSelection.css';
 
 const RozaMealSelection = () => {
@@ -20,6 +21,7 @@ const RozaMealSelection = () => {
   const [showRoutinePopup, setShowRoutinePopup] = useState(false);
   const [notifications, setNotifications] = useState([]);
   const [showNotifications, setShowNotifications] = useState(false);
+  const [showPricePopup, setShowPricePopup] = useState(false);
 
   const navigate = useNavigate();
 
@@ -93,7 +95,9 @@ const RozaMealSelection = () => {
   const toggleNotifications = () => {
     setShowNotifications(!showNotifications);
   };
-
+  const togglePricePopup = () => {
+    setShowPricePopup(!showPricePopup);
+  };
   const toggle = () => {
     navigate('/student-login/add-complaint');
   };
@@ -114,6 +118,13 @@ const RozaMealSelection = () => {
           className="btn btn-secondary"
         >
           View Notifications
+        </button>
+        <button
+          style={{ color: 'white', fontSize: '18px' }}
+          onClick={togglePricePopup}
+          className="btn btn-secondary"
+        >
+          View Roza Meal Prices
         </button>
         <button
           style={{ color: 'white', fontSize: '18px' }}
@@ -269,6 +280,16 @@ const RozaMealSelection = () => {
               Close
             </button>
             <RozaMealRoutinePage />
+          </div>
+        </div>
+      )}
+       {showPricePopup && (
+        <div className="popup">
+          <div className="popup-content">
+            <button className="close-btn" onClick={togglePricePopup}>
+              Close
+            </button>
+            <PriceRoutinePageRoza />
           </div>
         </div>
       )}

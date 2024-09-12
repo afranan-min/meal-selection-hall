@@ -6,6 +6,7 @@ const Notification = require('../models/Notification');
 const Complaint = require('../models/Complaint');
 const Roza = require('../models/Roza');
 const MealPrice = require('../models/MealPrice');
+const RamadanMealPrice = require('../models/RamadanMealPrice');
 const addStudent = async (req, res) => {
   const { id, name, password, department, level, roomNo } = req.body;
 
@@ -172,6 +173,14 @@ const getPriceroutine = async (req, res) => {
     res.status(500).json({ message: 'Error fetching prices', error });
   }
 };
+const getrozaPriceroutine = async (req, res) => {
+  try {
+    const prices = await RamadanMealPrice.findOne();
+    res.json(prices);
+  } catch (error) {
+    res.status(500).json({ message: 'Error fetching prices', error });
+  }
+};
 const updateMealPrices = async (req, res) => {
   console.log('Request body:');
   try {
@@ -191,6 +200,32 @@ const updateMealPrices = async (req, res) => {
 
     // Fetch the updated price document to send back as a response
     const updatedPricesFromDB = await MealPrice.findById(priceDoc._id);
+    res.status(200).json(updatedPricesFromDB);
+  } catch (error) {
+    console.error('Error updating meal prices:', error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+};
+
+const updaterozaMealPrices = async (req, res) => {
+  console.log('Request body:');
+  try {
+    const updatedPrices = req.body;
+
+    // Log the incoming request body for debugging
+    console.log('Request body:', updatedPrices);
+
+    // Check if price document exists
+    const priceDoc = await RamadanMealPrice.findOne();
+    if (!priceDoc) {
+      return res.status(404).json({ message: 'Price document not found' });
+    }
+
+    // Update the price document
+    await RamadanMealPrice.findByIdAndUpdate(priceDoc._id, updatedPrices, { new: true });
+
+    // Fetch the updated price document to send back as a response
+    const updatedPricesFromDB = await RamadanMealPrice.findById(priceDoc._id);
     res.status(200).json(updatedPricesFromDB);
   } catch (error) {
     console.error('Error updating meal prices:', error);
@@ -316,5 +351,7 @@ module.exports = {
   getrozaRoutine,
   updaterozaRoutine,
   getPriceroutine,
-  updateMealPrices
+  updateMealPrices,
+  getrozaPriceroutine,
+  updaterozaMealPrices
 };

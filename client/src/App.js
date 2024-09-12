@@ -30,6 +30,8 @@ import PriceRoutinePage from './pages/PriceRoutinePage';
 import UpdateMealPricePage from './pages/UpdateMealPricePage';
 import BillingPage from './pages/BillingPage';
 import StudentBillPage from './pages/StudentBillPage';
+import UpdateRozaMealPricePage from './pages/UpdateRozaMealPricePage.js';
+import PriceRoutinePageRoza from './pages/PriceRoutinePageRoza.js';
 const App = () => {
   return (
     <Router>
@@ -60,7 +62,9 @@ const App = () => {
         <Route path="/admin-dashboard/show-student-info" element={<ProtectedRoute requiredRole="admin"><AdminStudentsPage /></ProtectedRoute>} />
         <Route path="/admin-dashboard/change-room" element={<ProtectedRoute requiredRole="admin"><ChangeRoomPage /></ProtectedRoute>} />
         <Route path="/admin-dashboard/get-prices-meal" element={<ProtectedRoute requiredRole="admin"><PriceRoutinePage /></ProtectedRoute>} />
+        <Route path="/admin-dashboard/get-roza-prices-meal" element={<ProtectedRoute requiredRole="admin"><PriceRoutinePageRoza /></ProtectedRoute>} />
         <Route path="/admin-dashboard/update-prices-meal" element={<ProtectedRoute requiredRole="admin"><UpdateMealPricePage /></ProtectedRoute>} />
+        <Route path="/admin-dashboard/update-roza-prices-meal" element={<ProtectedRoute requiredRole="admin"><UpdateRozaMealPricePage /></ProtectedRoute>} />
         <Route path="/admin-dashboard/show-students-bill" element={<ProtectedRoute requiredRole="admin"><BillingPage /></ProtectedRoute>} />
         <Route path="/admin-dashboard/show-specific-student-bill" element={<ProtectedRoute requiredRole="admin"><StudentBillPage /></ProtectedRoute>} />
       </Routes>
