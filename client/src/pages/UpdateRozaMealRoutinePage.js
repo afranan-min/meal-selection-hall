@@ -53,7 +53,7 @@ const UpdateRozaMealRoutinePage = () => {
   };
 
   return (
-    <div className="container update-roza-meal-routine-page">
+    <div className="container update-roza-meal-routine-page" style={{ border:'none',color:'black',backgroundColor:'rgba(218, 238, 236, 0.49)'}}>
       <h2>Update Meal Routine</h2>
       <form onSubmit={handleSubmit}>
         {daysOfWeek.map((day) => (
@@ -75,7 +75,7 @@ const UpdateRozaMealRoutinePage = () => {
             </div>
           </div>
         ))}
-        <button type="submit" className="btn btn-primary mt-3">Update Routine</button>
+        <button type="submit" className="btn btn-primary mt-3" style={{ border:'none',color:'black',backgroundColor:'rgba(10, 68, 32, 0.5)'}}>Update Routine</button>
       </form>
     </div>
   );

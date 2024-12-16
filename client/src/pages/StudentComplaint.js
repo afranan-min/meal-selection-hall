@@ -75,7 +75,7 @@ const StudentComplaint = () => {
             className="form-control"
           ></textarea>
         </div>
-        <button type="submit" className="btn btn-primary">Submit Complaint</button>
+        <button type="submit" className="btn btn-primary" style={{ border:'none',color:'black',backgroundColor:'rgba(218, 238, 236, 0.49)'}}>Submit Complaint</button>
       </form>
     </div>
   );

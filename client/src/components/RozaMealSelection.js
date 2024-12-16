@@ -104,44 +104,44 @@ const RozaMealSelection = () => {
 
   return (
     <div className="container-fluid d-flex flex-column align-items-center" style={{ minHeight: '100vh', padding: '20px' }}>
-      <div className="d-flex justify-content-center flex-wrap gap-2 mb-3">
+      <div className="d-flex justify-content-center flex-wrap gap-2 mb-3" style={{ width: '100%', maxWidth: '500px' }}>
         <button
-          style={{ color: 'white', fontSize: '18px' }}
+          style={{ color: 'black', fontSize: '18px' ,backgroundColor:'rgba(218, 238, 236, 0.49)', border: 'none',boxShadow: '0px 4px 6px rgba(255, 255, 255, 0.3)', }}
           onClick={toggleRoutinePopup}
           className="btn btn-secondary"
         >
           View Meal Routine
         </button>
         <button
-          style={{ color: 'white', fontSize: '18px' }}
+          style={{ color: 'black', fontSize: '18px' ,backgroundColor:'rgba(218, 238, 236, 0.49)', border: 'none',boxShadow: '0px 4px 6px rgba(255, 255, 255, 0.3)', }}
           onClick={toggleNotifications}
           className="btn btn-secondary"
         >
           View Notifications
         </button>
         <button
-          style={{ color: 'white', fontSize: '18px' }}
+          style={{ color: 'black', fontSize: '18px',backgroundColor:'rgba(218, 238, 236, 0.49)', border: 'none',boxShadow: '0px 4px 6px rgba(255, 255, 255, 0.3)',  }}
           onClick={togglePricePopup}
           className="btn btn-secondary"
         >
           View Roza Meal Prices
         </button>
         <button
-          style={{ color: 'white', fontSize: '18px' }}
+          style={{ color: 'black', fontSize: '18px' ,backgroundColor:'rgba(218, 238, 236, 0.49)', border: 'none',boxShadow: '0px 4px 6px rgba(255, 255, 255, 0.3)', }}
           onClick={toggle}
           className="btn btn-secondary"
         >
           Add Complaint
         </button>
         <button
-          style={{ color: 'red', fontSize: '18px' }}
+          style={{ color: 'red', fontSize: '18px' ,backgroundColor:'rgba(218, 238, 236, 0.49)', border: 'none',boxShadow: '0px 4px 6px rgba(255, 255, 255, 0.3)', }}
           onClick={handleLogout}
           className="btn btn-secondary"
         >
           Logout
         </button>
       </div>
-      <div className="alert" style={{ width: '100%', maxWidth: '500px', backgroundColor: 'white', borderRadius: '5px', padding: '10px', textAlign: 'center' }}>
+      <div className="alert" style={{ width: '100%', maxWidth: '500px',backgroundColor:'rgba(218, 238, 236, 0.49)', borderRadius: '5px', padding: '10px', textAlign: 'center' }}>
         {isTeaAvailable ? (
           <p className="text-success">Tea is available!</p>
         ) : (
@@ -149,7 +149,7 @@ const RozaMealSelection = () => {
         )}
       </div>
       {!showRoutinePopup && !showNotifications && (
-        <div className="card p-4 shadow-lg" style={{ width: '100%', maxWidth: '500px' }}>
+        <div className="card p-4 shadow-lg" style={{ width: '100%', maxWidth: '500px',backgroundColor:'rgba(218, 238, 236, 0.49)' }}>
           <h2 className="text-center mb-4">Select Your Meals for Tomorrow</h2>
           <form onSubmit={handleSubmit} className="text-center">
             <div className="form-group mb-3">

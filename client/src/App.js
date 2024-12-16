@@ -32,6 +32,8 @@ import BillingPage from './pages/BillingPage';
 import StudentBillPage from './pages/StudentBillPage';
 import UpdateRozaMealPricePage from './pages/UpdateRozaMealPricePage.js';
 import PriceRoutinePageRoza from './pages/PriceRoutinePageRoza.js';
+import HallLifeForm from './pages/HallLifeForm.js';
+
 const App = () => {
   return (
     <Router>
@@ -46,6 +48,7 @@ const App = () => {
         <Route path="/admin-dashboard/show-meals-by-date" element={<ProtectedRoute requiredRole="admin"><ShowMealsByDate /></ProtectedRoute>} />
         <Route path="/meal-tick-off" element={<ProtectedRoute requiredRole="student"><MealTickOff /></ProtectedRoute>} />
         <Route path="/meal-selection" element={<ProtectedRoute requiredRole="student"><MealSelection /></ProtectedRoute>} />
+        <Route path="/student-login/share-hall-life" element={<ProtectedRoute requiredRole="student"><HallLifeForm /></ProtectedRoute>} />
         <Route path="/roza-meal-selection" element={<ProtectedRoute requiredRole="student"><RozaMealSelection /></ProtectedRoute>} />
         <Route path="/admin-dashboard/delete-student" element={<ProtectedRoute requiredRole="admin"><DeleteStudentPage /></ProtectedRoute>} />
         <Route path="/admin-dashboard/show-complaint" element={<ProtectedRoute requiredRole="admin"><AdminComplaints /></ProtectedRoute>} />

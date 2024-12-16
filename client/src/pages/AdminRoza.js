@@ -39,7 +39,7 @@ const AdminRoza = () => {
       <div className="form-group text-center">
         <label className="status-label">{isRoza ? "It is Ramadan month" : "It is not Ramadan month"}</label>
       </div>
-      <button className="btn btn-primary mt-3" onClick={handleToggleRoza}>
+      <button className="btn btn-primary mt-3" style={{ border:'none',color:'black',backgroundColor:'rgba(218, 238, 236, 0.49)'}} onClick={handleToggleRoza}>
         {isRoza ? "Change to Not Ramadan month" : "Change to Ramadan month"}
       </button>
     </div>

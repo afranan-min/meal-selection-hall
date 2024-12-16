@@ -144,7 +144,7 @@ const ShowMealsByDate = () => {
         )}
       </div>
 
-      <button onClick={handlePrint} className="btn btn-primary mt-3">
+      <button onClick={handlePrint} className="btn btn-primary mt-3" style={{ border:'none',color:'black',backgroundColor:'rgba(218, 238, 236, 0.49)'}}>
         Print Meals
       </button>
     </div>

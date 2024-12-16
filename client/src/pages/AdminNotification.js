@@ -55,7 +55,7 @@ const AdminNotification = () => {
           />
         </div>
         
-        <button type="submit" className="btn btn-primary btn-lg">Add Notification</button>
+        <button type="submit" className="btn btn-primary btn-lg" style={{ border:'none',color:'black',backgroundColor:'rgba(218, 238, 236, 0.49)'}}>Add Notification</button>
       </form>
     </div>
   );

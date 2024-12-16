@@ -39,6 +39,7 @@ const TeaAvailabilityPage = () => {
     backgroundColor: '#282c34',
     color: 'white',
     padding: '20px',
+    backgroundImage: 'url("https://wallpapercave.com/wp/wp8747461.jpg")'
   };
 
   const welcomeStyle = {
@@ -71,7 +72,7 @@ const TeaAvailabilityPage = () => {
       <h2 style={welcomeStyle} className="mb-4">Manage Tea Availability</h2>
       <div style={buttonContainerStyle}>
         <p style={statusTextStyle}>Tea is currently {teaAvailable ? 'available' : 'not available'}.</p>
-        <button style={buttonStyle} className="btn btn-light btn-lg" onClick={handleToggleAvailability}>
+        <button style={buttonStyle} className="btn btn-light btn-lg" onClick={handleToggleAvailability} >
           {teaAvailable ? 'Mark as Not Available' : 'Mark as Available'}
         </button>
       </div>

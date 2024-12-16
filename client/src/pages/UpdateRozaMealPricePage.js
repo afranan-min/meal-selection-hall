@@ -71,7 +71,7 @@ const UpdateRozaMealPricePage = () => {
                         ))}
                     </div>
                 ))}
-                <button type="submit" className="btn btn-primary mt-3">Update Prices</button>
+                <button type="submit" className="btn btn-primary mt-3" style={{ border:'none',color:'black',backgroundColor:'rgba(218, 238, 236, 0.49)'}}>Update Prices</button>
             </form>
         </div>
     );

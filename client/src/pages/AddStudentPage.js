@@ -73,7 +73,7 @@ const AddStudentPage = () => {
             />
           </div>
           <div className="form-group mb-3">
-            <label htmlFor="department">Department</label>
+            <label htmlFor="department" >Department</label>
             <input
               type="text"
               className="form-control"
@@ -109,7 +109,7 @@ const AddStudentPage = () => {
             />
           </div>
           <div className="text-center">
-            <button type="submit" className="btn btn-light btn-lg mt-3 border">Add Student</button>
+            <button type="submit" className="btn btn-light btn-lg mt-3 border" style={{ border:'none',color:'black',backgroundColor:'rgba(218, 238, 236, 0.49)'}}>Add Student</button>
           </div>
         </form>
       </div>

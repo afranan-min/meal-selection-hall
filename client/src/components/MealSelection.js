@@ -106,19 +106,19 @@ const MealSelection = () => {
     <div className="container-fluid d-flex flex-column align-items-center min-vh-100 p-3">
       <div className="top-left-buttons">
         <div className={`menu ${menuOpen ? 'open' : ''}`}>
-          <button style={{ color: 'red' }} onClick={handleLogout} className="btn btn-secondary">
+          <button style={{ color: 'red', fontSize: '18px' ,backgroundColor:'rgba(218, 238, 236, 0.49)', border: 'none',boxShadow: '0px 4px 6px rgba(255, 255, 255, 0.3)', }} onClick={handleLogout} className="btn btn-secondary">
             Logout
           </button>
-          <button onClick={toggleRoutinePopup} className="btn btn-secondary">
+          <button onClick={toggleRoutinePopup} className="btn btn-secondary" style={{ color: 'black', fontSize: '18px' ,backgroundColor:'rgba(218, 238, 236, 0.49)', border: 'none',boxShadow: '0px 4px 6px rgba(255, 255, 255, 0.3)', }}>
             View Meal Routine
           </button>
-          <button onClick={togglePricePopup} className="btn btn-secondary">
+          <button onClick={togglePricePopup} className="btn btn-secondary" style={{ color: 'black', fontSize: '18px' ,backgroundColor:'rgba(218, 238, 236, 0.49)', border: 'none',boxShadow: '0px 4px 6px rgba(255, 255, 255, 0.3)', }}>
             View Meal Prices
           </button>
-          <button onClick={toggleNotifications} className="btn btn-secondary">
+          <button onClick={toggleNotifications} className="btn btn-secondary" style={{ color: 'black', fontSize: '18px' ,backgroundColor:'rgba(218, 238, 236, 0.49)', border: 'none',boxShadow: '0px 4px 6px rgba(255, 255, 255, 0.3)', }}>
             View Notifications
           </button>
-          <button onClick={toggle} className="btn btn-secondary">
+          <button onClick={toggle} className="btn btn-secondary" style={{ color: 'black', fontSize: '18px' ,backgroundColor:'rgba(218, 238, 236, 0.49)', border: 'none',boxShadow: '0px 4px 6px rgba(255, 255, 255, 0.3)', }}>
             Add Complaint
           </button>
         </div>
@@ -132,7 +132,7 @@ const MealSelection = () => {
       </div>
 
       {!showRoutinePopup && !showNotifications && (
-        <div className="card p-4 shadow-lg" style={{ width: '100%', maxWidth: '500px', marginTop: '300px' }}>
+        <div className="card p-4 shadow-lg" style={{ width: '100%', maxWidth: '500px', marginTop: '300px', backgroundColor:'rgba(218, 238, 236, 0.49)'}}>
           <h2 className="text-center mb-4">Select Your Meals for Tomorrow</h2>
           <form onSubmit={handleSubmit}>
             <div className="form-group mb-3">

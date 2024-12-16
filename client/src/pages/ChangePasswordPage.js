@@ -43,7 +43,7 @@ const ChangePasswordPage = () => {
               required
             />
           </div>
-          <button type="submit" className="btn btn-primary mt-3 w-100">Change Password</button>
+          <button type="submit" className="btn btn-primary mt-3 w-100" style={{ border:'none',color:'black',backgroundColor:'rgba(218, 238, 236, 0.49)'}}>Change Password</button>
         </form>
       </div>
     </div>

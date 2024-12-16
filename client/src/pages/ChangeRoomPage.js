@@ -43,7 +43,7 @@ const ChangeRoomPage = () => {
               required
             />
           </div>
-          <button type="submit" className="btn btn-primary mt-3 w-100">Change Room Number</button>
+          <button type="submit" className="btn btn-primary mt-3 w-100" style={{ border:'none',color:'black',backgroundColor:'rgba(218, 238, 236, 0.49)'}}>Change Room Number</button>
         </form>
       </div>
     </div>
