@@ -7,6 +7,8 @@ const Complaint = require('../models/Complaint');
 const Roza = require('../models/Roza');
 const MealPrice = require('../models/MealPrice');
 const RamadanMealPrice = require('../models/RamadanMealPrice');
+const StudentHallLife = require('../models/StudentHallLife');
+const axios = require('axios');
 const addStudent = async (req, res) => {
   const { id, name, password, department, level, roomNo } = req.body;
 
@@ -328,6 +330,58 @@ const changeStudentRoom = async (req, res) => {
     res.status(500).send('Server error');
   }
 };
+const checkComment = async (comment) => {
+  try {
+    console.log('min1')
+    const response = await axios.post('http://127.0.0.1:5002/predict', { text: comment });
+    console.log('min2')
+    return response.data.prediction;
+    
+  } catch (error) {
+    console.log('min3')
+    console.error('Error checking comment:', error);
+    console.log('min4')
+    throw error;
+  }
+};
+const addStudenthalllife = async (req, res) => {
+  const { description } = req.body;
+  console.log('min5');
+
+  try {
+    console.log('min6');
+
+    // Assuming checkComment is a function that checks for negative comments
+    const prediction = await checkComment(description);
+    console.log('min7');
+
+    if (prediction === 0) { // Assuming 0 indicates a negative comment
+      console.log('min8');
+      console.warn('Negative comment detected');
+      
+      // Return a response if negative comment detected
+      return res.status(400).json({ message: 'Negative comment detected. Hall life could not be shared.' });
+    }
+
+    // Save the data to the database if no negative comment detected
+    const newHallLife = new StudentHallLife(req.body);
+    await newHallLife.save();
+    console.log('min9');
+
+    // Send a successful response
+    return res.status(200).json({ message: 'Hall life shared successfully!' });
+
+  } catch (error) {
+    console.log('min10');
+    
+    // Handle errors and ensure response is only sent once
+    if (!res.headersSent) { // Check if headers are already sent
+      res.status(500).json({ message: 'Failed to share hall life. Please try again.' });
+    } else {
+      console.error('Error sending response:', error);
+    }
+  }
+};
 
 module.exports = {
   addStudent,
@@ -353,5 +407,6 @@ module.exports = {
   getPriceroutine,
   updateMealPrices,
   getrozaPriceroutine,
-  updaterozaMealPrices
+  updaterozaMealPrices,
+  addStudenthalllife
 };
